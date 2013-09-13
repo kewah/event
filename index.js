@@ -57,5 +57,5 @@ exports.once = function(el, type, fn, capture) {
     fn.apply(this, arguments);
   }
 
-  exports.on(el, type, callback, capture);
+  return exports.on(el, type, callback, capture);
 };
