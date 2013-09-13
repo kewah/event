@@ -4,21 +4,33 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   </head>
   <body>
-    <a href="/something">link</a>
+    <a id="onOff" href="#">on/off</a>
+    <a id="once" href="#">once</a>
 
     <script src="../build/build.js"></script>
 
     <script>
       var events = require('event');
-      var a = document.querySelector('a');
+      var aOnOff = document.querySelector('#onOff');
 
       function onclick(e) {
         e.preventDefault();
         console.log(e.target);
-        events.unbind(a, 'click', onclick);
+        events.off(aOnOff, 'click', onclick);
       }
 
-      events.bind(a, 'click', onclick);
+      events.on(aOnOff, 'click', onclick);
+
+
+      var aOnce = document.querySelector('#once');
+
+      function onceClick(e) {
+        e.preventDefault();
+        console.log(e.target);
+      }
+
+      events.once(aOnce, 'click', onceClick);
+
     </script>
   </body>
 </html>
